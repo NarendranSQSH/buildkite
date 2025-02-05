@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tutorial-test
+  labels:
+    app: tutorial
+spec:
+  # TODO: replace with a value that fits your application
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tutorial
+  template:
+    metadata:
+      labels:
+        app: tutorial
+    spec:
+      containers:
+        - name: app
+          image: "${DOCKER_IMAGE}"
+          ports:
+            # TODO: replace with the correct port for your application
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tutorial-service-test
+  labels:
+    app: tutorial
+spec:
+  selector:
+    app: tutorial
+  ports:
+    - protocol: TCP
+      port: 80           # The port exposed by the LoadBalancer
+      targetPort: 80    # The port your container is listening on (from the deployment.yaml)
+  type: LoadBalancer      # Expose as a LoadBalancer

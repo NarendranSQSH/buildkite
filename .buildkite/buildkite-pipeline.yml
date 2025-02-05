@@ -23,9 +23,11 @@ steps:
     key: configure
     depends_on: deploy
 
-  - label: ":rocket: Push to :kubernetes:"
-    command: script/buildkite/deploy
-    concurrency: 1
-    concurrency_group: deploy/tutorial
+ - label: ":rocket: Deploy"
+    command: |
+      - "cd src"                            
+      - "docker build -t us-central1-docker.pkg.dev/arun-poc/buildkite/buildkite-app:latest ." 
+      - "docker push us-central1-docker.pkg.dev/arun-poc/buildkite/buildkite-app:latest"        
+      - "kubectl apply -f final.yaml"              
     key: finaldeploy
-    depends_on: configure             
+    depends_on: configure
