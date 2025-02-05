@@ -4,6 +4,6 @@ metadata:
   namespace: buildkite
   name: buildkite-deployment-role
 rules:
-  - apiGroups: [""]
+  - apiGroups: ["apps/v1"]
     resources: ["pods", "services", "deployments"]
     verbs: ["get", "list", "create", "update", "delete"]

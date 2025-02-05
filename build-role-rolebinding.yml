@@ -4,7 +4,7 @@ metadata:
   namespace: default
   name: default-deployment-role
 rules:
-  - apiGroups: [""]
+  - apiGroups: ["apps/v1"]
     resources: ["deployments"]
     verbs: ["get", "list", "create", "update", "delete"]
 ---

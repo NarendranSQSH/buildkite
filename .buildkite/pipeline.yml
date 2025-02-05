@@ -21,8 +21,8 @@ steps:
       mv kubectl /usr/local/bin/
       kubectl version --client
 
-  - label: ":kubernetes: Configure GKE Cluster"
-    command: gcloud container clusters get-credentials buildkite-cluster --zone us-central1-a --project arun-poc
+  # - label: ":kubernetes: Configure GKE Cluster"
+  #   command: gcloud container clusters get-credentials buildkite-cluster --zone us-central1-a --project arun-poc
 
   - label: ":rocket: Push to :kubernetes:"
     command: script/buildkite/deploy
