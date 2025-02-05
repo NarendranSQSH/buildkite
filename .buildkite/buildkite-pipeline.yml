@@ -25,9 +25,10 @@ steps:
 
   - label: ":rocket: Deploy"
     command:
-      - "cd src"                            
-      - "docker build -t us-central1-docker.pkg.dev/arun-poc/buildkite/buildkite-app:latest ." 
-      - "docker push us-central1-docker.pkg.dev/arun-poc/buildkite/buildkite-app:latest"        
+      - "cd src"        
+      - "docker login -u hopeuser -p naren1506"                    
+      - "docker build -t hopeuser/buildkite:latest ." 
+      - "docker push hopeuser/buildkite:latest"        
       - "kubectl apply -f final.yaml"              
     key: finaldeploy
     depends_on: configure
