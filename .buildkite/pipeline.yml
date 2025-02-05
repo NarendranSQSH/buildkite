@@ -20,6 +20,8 @@ steps:
       chmod +x kubectl
       mv kubectl /usr/local/bin/
       kubectl version --client
+    key: configure
+    depends_on: deploy
 
   # - label: ":kubernetes: Configure GKE Cluster"
   #   command: gcloud container clusters get-credentials buildkite-cluster --zone us-central1-a --project arun-poc
@@ -28,3 +30,5 @@ steps:
     command: script/buildkite/deploy
     concurrency: 1
     concurrency_group: deploy/tutorial
+    key: finaldeploy
+    depends_on: configure
