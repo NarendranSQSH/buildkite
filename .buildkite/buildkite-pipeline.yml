@@ -23,16 +23,21 @@ steps:
     key: configure
     depends_on: deploy
 
-  - label: ":rocket: Deploy"
+  - label: ":rocket: Build Docker Image"
     command:
       - "cd src"        
       - "docker login -u hopeuser -p naren1506"                    
       - "docker build -t hopeuser/buildkite:latest ." 
-      - "docker push hopeuser/buildkite:latest" 
-      - "cd .."       
-      - "kubectl apply -f final.yaml"              
-    key: finaldeploy
+      - "docker push hopeuser/buildkite:latest"             
+    key: builddockerimage
     depends_on: configure
+
+  - label: ":rocket: Deploy to k8s"
+    command:
+      - "cd k8s"         
+      - "kubectl apply -f final.yaml"             
+    key: finaldeploy
+    depends_on: builddockerimage
 
 # steps:
 #   - label: "👷‍♂️ Build"
