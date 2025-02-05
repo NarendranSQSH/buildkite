@@ -1,0 +1,14 @@
+steps:
+  - label: "👷‍♂️ Build"
+    command: echo "Build the rocket"
+    key: build
+
+  - label: "✅ Test"
+    command: echo "Test the rocket"
+    key: test
+    depends_on: build
+
+  - label: "🚀 Deploy"
+    command: echo "Launch the rocket"
+    key: deploy
+    depends_on: test
