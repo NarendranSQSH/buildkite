@@ -12,3 +12,8 @@ steps:
     command: echo "Launch the rocket"
     key: deploy
     depends_on: test
+
+  - label: ":rocket: Push to :kubernetes:"
+    command: script/buildkite/deploy
+    concurrency: 1
+    concurrency_group: deploy/tutorial
