@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: "${DOCKER_IMAGE}"
+          image: hopeuser/buildkite:latest
           ports:
             # TODO: replace with the correct port for your application
             - containerPort: 80
