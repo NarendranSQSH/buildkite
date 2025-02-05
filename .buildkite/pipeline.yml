@@ -13,6 +13,9 @@ steps:
     key: deploy
     depends_on: test
 
+  - label: ":kubernetes: Deploy"
+    command: sudo apt update && sudo apt install -y gettext
+
   - label: ":rocket: Push to :kubernetes:"
     command: script/buildkite/deploy
     concurrency: 1
