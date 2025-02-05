@@ -24,7 +24,7 @@ steps:
     depends_on: deploy
 
  - label: ":rocket: Deploy"
-    command: |
+    command: 
       - "cd src"                            
       - "docker build -t us-central1-docker.pkg.dev/arun-poc/buildkite/buildkite-app:latest ." 
       - "docker push us-central1-docker.pkg.dev/arun-poc/buildkite/buildkite-app:latest"        
