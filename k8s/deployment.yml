@@ -8,7 +8,7 @@ metadata:
     app: tutorial
 spec:
   # TODO: replace with a value that fits your application
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: tutorial
