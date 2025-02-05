@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: buildkite-agent
-  namespace: buildkite
 spec:
   replicas: 1
   selector:
