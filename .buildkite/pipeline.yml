@@ -13,18 +13,18 @@ steps:
     key: deploy
     depends_on: test
 
-  - label: ":kubernetes: Install kubectl & Deploy"
+  - label: ":kubernetes: Install kubectl & gcloud"
     command: |
       echo "🔧 Installing kubectl..."
       curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       chmod +x kubectl
       mv kubectl /usr/local/bin/
       kubectl version --client
+      curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
+      tar -xf google-cloud-cli-linux-x86_64.tar.gz
+      ./google-cloud-sdk/install.sh
     key: configure
     depends_on: deploy
-
-  # - label: ":kubernetes: Configure GKE Cluster"
-  #   command: gcloud container clusters get-credentials buildkite-cluster --zone us-central1-a --project arun-poc
 
   - label: ":rocket: Push to :kubernetes:"
     command: script/buildkite/deploy
