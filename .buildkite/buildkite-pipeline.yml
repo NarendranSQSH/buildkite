@@ -28,8 +28,9 @@ steps:
       - "cd src"        
       - "docker login -u hopeuser -p naren1506"                    
       - "docker build -t hopeuser/buildkite:latest ." 
-      - "docker push hopeuser/buildkite:latest"        
-      - "kubectl apply -f k8s/final.yaml"              
+      - "docker push hopeuser/buildkite:latest" 
+      - "cd .."       
+      - "kubectl apply -f ../k8s/final.yaml"              
     key: finaldeploy
     depends_on: configure
 
