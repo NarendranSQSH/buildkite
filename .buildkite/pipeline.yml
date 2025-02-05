@@ -22,7 +22,7 @@ steps:
       kubectl version --client
       curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
       tar -xf google-cloud-cli-linux-x86_64.tar.gz
-      ./google-cloud-sdk/install.sh
+      ./google-cloud-sdk/install.sh --help
     key: configure
     depends_on: deploy
 
