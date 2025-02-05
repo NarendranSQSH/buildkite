@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tutorial
-  namespace: buildkite
   labels:
     app: tutorial
 spec:
