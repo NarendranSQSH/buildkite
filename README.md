@@ -41,7 +41,7 @@ And that the Buildkite agent has registered successfully.
 
 $ kubectl logs buildkite-agent-67d54b9b88-jnzxg buildkite
 
-   _           _ _     _ _    _ _                                _
+   <!-- _           _ _     _ _    _ _                                _
   | |         (_) |   | | |  (_) |                              | |
   | |__  _   _ _| | __| | | ___| |_ ___    __ _  __ _  ___ _ __ | |_
   | '_ \| | | | | |/ _` | |/ / | __/ _ \  / _` |/ _` |/ _ \ '_ \| __|
@@ -60,7 +60,7 @@ $ kubectl logs buildkite-agent-67d54b9b88-jnzxg buildkite
 2021-05-26 12:55:27 INFO   Starting 1 Agent(s)
 2021-05-26 12:55:27 INFO   You can press Ctrl-C to stop the agents
 2021-05-26 12:55:27 INFO   buildkite-agent-67d54b9b88-jnzxg-1 Connecting to Buildkite...
-2021-05-26 12:55:27 INFO   buildkite-agent-67d54b9b88-jnzxg-1 Waiting for work...
+2021-05-26 12:55:27 INFO   buildkite-agent-67d54b9b88-jnzxg-1 Waiting for work... -->
 
 You're successfully running a Buildkite agent!
 
