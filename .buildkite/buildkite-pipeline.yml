@@ -13,14 +13,14 @@ steps:
     key: deploy
     depends_on: test
 
-  - label: ":kubernetes: Install kubectl & gcloud"
+  - label: ":kubernetes: Install kubectl"
     command: |
       echo "🔧 Installing kubectl..."
       curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       chmod +x kubectl
       mv kubectl /usr/local/bin/
       kubectl version --client
-    key: configure
+    key: kubectl
     depends_on: deploy
 
   - label: ":rocket: Build Docker Image"
@@ -30,45 +30,11 @@ steps:
       - "docker build -t hopeuser/buildkite:latest ." 
       - "docker push hopeuser/buildkite:latest"             
     key: builddockerimage
-    depends_on: configure
+    depends_on: kubectl
 
   - label: ":rocket: Deploy to k8s"
     command:
       - "cd k8s"         
       - "kubectl apply -f final.yaml"             
-    key: finaldeploy
+    key: k8sdeploy
     depends_on: builddockerimage
-
-# steps:
-#   - label: "👷‍♂️ Build"
-#     command: echo "Build the rocket"
-#     key: build
-
-#   - label: "✅ Test"
-#     command: echo "Test the rocket"
-#     key: test
-#     depends_on: build
-
-#   - label: "🚀 Deploy-Test"
-#     command: echo "Launch the rocket"
-#     key: deploy
-#     depends_on: test
-
-#   - label: ":kubernetes: Install kubectl & gcloud"
-#     command: |
-#       echo "🔧 Installing kubectl..."
-#       curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-#       chmod +x kubectl
-#       mv kubectl /usr/local/bin/
-#       kubectl version --client
-#     key: configure
-#     depends_on: deploy
-
-#  - label: ":rocket: Deploy"
-#     command: 
-#       - "cd src"                            
-#       - "docker build -t us-central1-docker.pkg.dev/arun-poc/buildkite/buildkite-app:latest ." 
-#       - "docker push us-central1-docker.pkg.dev/arun-poc/buildkite/buildkite-app:latest"        
-#       - "kubectl apply -f final.yaml"              
-#     key: finaldeploy
-#     depends_on: configure
