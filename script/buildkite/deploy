@@ -12,7 +12,7 @@ manifest="$(mktemp)"
 echo '--- :kubernetes: Shipping'
 
 #envsubst < k8s/deployment.yml > "${manifest}"
-sed -e "s|\${DOCKER_IMAGE}|${DOCKER_IMAGE}|g" k8s/deployment.yml > "${manifest}"
+sed -e "s|\${DOCKER_IMAGE}|${DOCKER_IMAGE}|g" k8s-yaml/deployment.yml > "${manifest}"
 
 kubectl apply -f "${manifest}"
 
