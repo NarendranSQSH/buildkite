@@ -1,3 +1,4 @@
+#This is a Sample Yaml Deployment File
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,18 +22,3 @@ spec:
           ports:
             # TODO: replace with the correct port for your application
             - containerPort: 80
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: tutorial-service
-#   labels:
-#     app: tutorial
-# spec:
-#   selector:
-#     app: tutorial
-#   ports:
-#     - protocol: TCP
-#       port: 80           # The port exposed by the LoadBalancer
-#       targetPort: 80    # The port your container is listening on (from the deployment.yaml)
-#   type: LoadBalancer      # Expose as a LoadBalancer
